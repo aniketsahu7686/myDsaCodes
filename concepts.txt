@@ -1,0 +1,70 @@
+---------------------------What is Comparator in Arrays.sort()?---------------------------------------------
+
+The Comparator is an interface used to define custom sorting logic when you're sorting an array of objects (like Task[], Student[], etc.).
+( An array of objects in Java is just like an array of integers or strings — but instead of storing primitive types, it stores references to instances of a class (i.e., objects). )
+
+class Task {
+    int start;
+    int end;
+
+    Task(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+}
+
+Task[] tasks = {
+    new Task(5, 10),
+    new Task(1, 3),
+    new Task(2, 8)
+};
+
+
+When you call:
+Arrays.sort(array, comparator);
+Java uses the provided comparator to determine how the elements should be ordered.
+
+
+
+**Sorting by start in Ascending Order:
+Arrays.sort(tasks, Comparator.comparingInt(task -> task.start));
+
+🔍 What Happens Here?
+comparingInt(task -> task.start) tells Java:
+"Compare objects by their start field in ascending order."
+
+So after sorting:
+tasks = [
+  Task(1, 3),
+  Task(2, 8),
+  Task(5, 10)
+];
+
+
+
+**Sorting by start in Descending Order:
+Arrays.sort(tasks, Comparator.comparingInt(task -> task.start).reversed());
+
+🔍 What Happens Here?
+.reversed() tells Java:
+
+"Reverse the order of comparison — so sort in descending order by start."
+So after sorting:
+tasks = [
+  Task(5, 10),
+  Task(2, 8),
+  Task(1, 3)
+];
+
+
+
+**Arrays.sort(tasks, Comparator
+    .comparingInt((Task task) -> task.start)
+    .thenComparingInt(task -> task.end)
+);
+This will:
+Sort tasks by their start time in ascending order.
+If two tasks have the same start time, it will then sort them by end time in ascending order.
+
+
+
