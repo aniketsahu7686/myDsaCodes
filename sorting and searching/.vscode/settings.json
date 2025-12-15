@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "searching",
+        "sorting"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
+}
